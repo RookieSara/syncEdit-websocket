@@ -1,6 +1,6 @@
 const ws = require('nodejs-websocket');
  let clientCount = 0;
- let cache = '';
+//  let cache = '';
 // 创建一个websocket的服务器
 const server = ws.createServer(function(conn){
 
@@ -9,12 +9,12 @@ const server = ws.createServer(function(conn){
     console.log('new connection',clientCount);
 
     // 使新打开的客户端页面保留上一个页面的信息
-    conn.sendText(cache);
+//     conn.sendText(cache);
 
     // 3. 接收客户端的消息
     conn.on('text', (data)=>{
-        // console.log('接收到来自客户端的消息：', data);
-        cache = data ;
+        console.log('接收到来自客户端的消息：', data);
+//         cache = data ;
 
         // 3.1 广播给每一个客户端
         boardcast(data);
